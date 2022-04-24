@@ -1,0 +1,974 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D72F0A94-1123-4970-8BE6-94378CF67BF9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShowroomCar</RootNamespace>
+    <AssemblyName>ShowroomCar</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\admin\css\accordions.css" />
+    <Content Include="App_Themes\admin\css\alerts.css" />
+    <Content Include="App_Themes\admin\css\animate.css" />
+    <Content Include="App_Themes\admin\css\bootstrap.min.css" />
+    <Content Include="App_Themes\admin\css\buttons.css" />
+    <Content Include="App_Themes\admin\css\c3\c3.min.css" />
+    <Content Include="App_Themes\admin\css\calendar\fullcalendar.min.css" />
+    <Content Include="App_Themes\admin\css\calendar\fullcalendar.print.min.css" />
+    <Content Include="App_Themes\admin\css\chosen\bootstrap-chosen.css" />
+    <Content Include="App_Themes\admin\css\chosen\chosen-sprite.png" />
+    <Content Include="App_Themes\admin\css\code-editor\ambiance.css" />
+    <Content Include="App_Themes\admin\css\code-editor\codemirror.css" />
+    <Content Include="App_Themes\admin\css\colorpicker\colorpicker.css" />
+    <Content Include="App_Themes\admin\css\cropper\cropper.min.css" />
+    <Content Include="App_Themes\admin\css\data-table\bootstrap-editable.css" />
+    <Content Include="App_Themes\admin\css\data-table\bootstrap-table.css" />
+    <Content Include="App_Themes\admin\css\datapicker\colorpicker.css" />
+    <Content Include="App_Themes\admin\css\datapicker\datepicker3.css" />
+    <Content Include="App_Themes\admin\css\dropzone\dropzone.css" />
+    <Content Include="App_Themes\admin\css\duallistbox\bootstrap-duallistbox.min.css" />
+    <Content Include="App_Themes\admin\css\editor\bootstrap-editable.css" />
+    <Content Include="App_Themes\admin\css\editor\datetimepicker.css" />
+    <Content Include="App_Themes\admin\css\editor\select2.css" />
+    <Content Include="App_Themes\admin\css\editor\x-editor-style.css" />
+    <Content Include="App_Themes\admin\css\font-awesome.min.css" />
+    <Content Include="App_Themes\admin\css\form\all-type-forms.css" />
+    <Content Include="App_Themes\admin\css\form\themesaller-forms.css" />
+    <Content Include="App_Themes\admin\css\ionRangeSlider\ion.rangeSlider.css" />
+    <Content Include="App_Themes\admin\css\ionRangeSlider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="App_Themes\admin\css\ionRangeSlider\sprite-skin-flat.png" />
+    <Content Include="App_Themes\admin\css\main.css" />
+    <Content Include="App_Themes\admin\css\meanmenu.min.css" />
+    <Content Include="App_Themes\admin\css\metisMenu\metisMenu-vertical.css" />
+    <Content Include="App_Themes\admin\css\metisMenu\metisMenu.min.css" />
+    <Content Include="App_Themes\admin\css\modals.css" />
+    <Content Include="App_Themes\admin\css\morrisjs\morris.css" />
+    <Content Include="App_Themes\admin\css\normalize.css" />
+    <Content Include="App_Themes\admin\css\notifications\Lobibox.min.css" />
+    <Content Include="App_Themes\admin\css\notifications\notifications.css" />
+    <Content Include="App_Themes\admin\css\owl.carousel.css" />
+    <Content Include="App_Themes\admin\css\owl.theme.css" />
+    <Content Include="App_Themes\admin\css\owl.transitions.css" />
+    <Content Include="App_Themes\admin\css\preloader\preloader-style.css" />
+    <Content Include="App_Themes\admin\css\responsive.css" />
+    <Content Include="App_Themes\admin\css\scrollbar\jquery.mCustomScrollbar.min.css" />
+    <Content Include="App_Themes\admin\css\select2\select2.min.css" />
+    <Content Include="App_Themes\admin\css\summernote\summernote.css" />
+    <Content Include="App_Themes\admin\css\tabs.css" />
+    <Content Include="App_Themes\admin\css\touchspin\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="App_Themes\admin\css\tree-viewer\32px.png" />
+    <Content Include="App_Themes\admin\css\tree-viewer\throbber.gif" />
+    <Content Include="App_Themes\admin\css\tree-viewer\tree-viewer.css" />
+    <Content Include="App_Themes\admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="App_Themes\admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Themes\admin\img\blog-details\1.jpg" />
+    <Content Include="App_Themes\admin\img\contact\1.jpg" />
+    <Content Include="App_Themes\admin\img\contact\2.jpg" />
+    <Content Include="App_Themes\admin\img\contact\3.jpg" />
+    <Content Include="App_Themes\admin\img\contact\4.jpg" />
+    <Content Include="App_Themes\admin\img\cropper\1.jpg" />
+    <Content Include="App_Themes\admin\img\favicon.ico" />
+    <Content Include="App_Themes\admin\img\green1.png" />
+    <Content Include="App_Themes\admin\img\logo\logo.png" />
+    <Content Include="App_Themes\admin\img\new-product\5-small.jpg" />
+    <Content Include="App_Themes\admin\img\new-product\5.jpg" />
+    <Content Include="App_Themes\admin\img\new-product\6-small.jpg" />
+    <Content Include="App_Themes\admin\img\new-product\6.jpg" />
+    <Content Include="App_Themes\admin\img\new-product\7-small.jpg" />
+    <Content Include="App_Themes\admin\img\new-product\7.jpg" />
+    <Content Include="App_Themes\admin\img\notification\1.jpg" />
+    <Content Include="App_Themes\admin\img\notification\2.jpg" />
+    <Content Include="App_Themes\admin\img\notification\3.jpg" />
+    <Content Include="App_Themes\admin\img\notification\4.jpg" />
+    <Content Include="App_Themes\admin\img\notification\5.jpg" />
+    <Content Include="App_Themes\admin\img\notification\6.jpg" />
+    <Content Include="App_Themes\admin\img\product\1.jpg" />
+    <Content Include="App_Themes\admin\img\product\2.jpg" />
+    <Content Include="App_Themes\admin\img\product\3.jpg" />
+    <Content Include="App_Themes\admin\img\product\87453333_1442333442641571_4905628756917354496_n.jpg" />
+    <Content Include="App_Themes\admin\img\product\anh_1.png" />
+    <Content Include="App_Themes\admin\img\product\anh_2.png" />
+    <Content Include="App_Themes\admin\img\product\Aventador LP750-SV.jpg" />
+    <Content Include="App_Themes\admin\img\product\beauty_20180914190929.jpg" />
+    <Content Include="App_Themes\admin\img\product\beauty_20180914191030.jpg" />
+    <Content Include="App_Themes\admin\img\product\beauty_20180925193604.jpg" />
+    <Content Include="App_Themes\admin\img\product\beauty_20180930124312.jpg" />
+    <Content Include="App_Themes\admin\img\product\bg-1.jpg" />
+    <Content Include="App_Themes\admin\img\product\bg-2.jpg" />
+    <Content Include="App_Themes\admin\img\product\bg-3.jpg" />
+    <Content Include="App_Themes\admin\img\product\CAMRY 20G.png" />
+    <Content Include="App_Themes\admin\img\product\code-first-trong-entity-framework-1.jpg" />
+    <Content Include="App_Themes\admin\img\product\Huracan LP610-4.jpg" />
+    <Content Include="App_Themes\admin\img\product\i8.jpg" />
+    <Content Include="App_Themes\admin\img\product\Lexus ES 250.jpg" />
+    <Content Include="App_Themes\admin\img\product\notthingbook.png" />
+    <Content Include="App_Themes\admin\img\product\p1.jpg" />
+    <Content Include="App_Themes\admin\img\product\p2.jpg" />
+    <Content Include="App_Themes\admin\img\product\p3.jpg" />
+    <Content Include="App_Themes\admin\img\product\p4.jpg" />
+    <Content Include="App_Themes\admin\img\product\p5.jpg" />
+    <Content Include="App_Themes\admin\js\bootstrap.min.js" />
+    <Content Include="App_Themes\admin\js\c3-charts\c3-active.js" />
+    <Content Include="App_Themes\admin\js\c3-charts\c3.min.js" />
+    <Content Include="App_Themes\admin\js\c3-charts\d3.min.js" />
+    <Content Include="App_Themes\admin\js\calendar\fullcalendar-active.js" />
+    <Content Include="App_Themes\admin\js\calendar\fullcalendar.min.js" />
+    <Content Include="App_Themes\admin\js\calendar\moment.min.js" />
+    <Content Include="App_Themes\admin\js\card.js" />
+    <Content Include="App_Themes\admin\js\charts\area-chart.js" />
+    <Content Include="App_Themes\admin\js\charts\bar-chart.js" />
+    <Content Include="App_Themes\admin\js\charts\Chart.js" />
+    <Content Include="App_Themes\admin\js\charts\line-chart.js" />
+    <Content Include="App_Themes\admin\js\charts\rounded-chart.js" />
+    <Content Include="App_Themes\admin\js\chart\jquery.peity.min.js" />
+    <Content Include="App_Themes\admin\js\chart\peity-active.js" />
+    <Content Include="App_Themes\admin\js\chosen\chosen-active.js" />
+    <Content Include="App_Themes\admin\js\chosen\chosen.jquery.js" />
+    <Content Include="App_Themes\admin\js\code-editor\code-editor-active.js" />
+    <Content Include="App_Themes\admin\js\code-editor\code-editor.js" />
+    <Content Include="App_Themes\admin\js\code-editor\codemirror.js" />
+    <Content Include="App_Themes\admin\js\colorpicker\color-picker-active.js" />
+    <Content Include="App_Themes\admin\js\colorpicker\jquery.spectrum.min.js" />
+    <Content Include="App_Themes\admin\js\counterup\counterup-active.js" />
+    <Content Include="App_Themes\admin\js\counterup\jquery.counterup.min.js" />
+    <Content Include="App_Themes\admin\js\counterup\waypoints.min.js" />
+    <Content Include="App_Themes\admin\js\cropper\cropper-actice.js" />
+    <Content Include="App_Themes\admin\js\cropper\cropper.min.js" />
+    <Content Include="App_Themes\admin\js\data-map\d3.min.js" />
+    <Content Include="App_Themes\admin\js\data-map\data-maps-active.js" />
+    <Content Include="App_Themes\admin\js\data-map\datamaps.all.min.js" />
+    <Content Include="App_Themes\admin\js\data-map\topojson.js" />
+    <Content Include="App_Themes\admin\js\data-table\bootstrap-editable.js" />
+    <Content Include="App_Themes\admin\js\data-table\bootstrap-table-editable.js" />
+    <Content Include="App_Themes\admin\js\data-table\bootstrap-table-export.js" />
+    <Content Include="App_Themes\admin\js\data-table\bootstrap-table-resizable.js" />
+    <Content Include="App_Themes\admin\js\data-table\bootstrap-table.js" />
+    <Content Include="App_Themes\admin\js\data-table\colResizable-1.5.source.js" />
+    <Content Include="App_Themes\admin\js\data-table\data-table-active.js" />
+    <Content Include="App_Themes\admin\js\data-table\tableExport.js" />
+    <Content Include="App_Themes\admin\js\datapicker\bootstrap-datepicker.js" />
+    <Content Include="App_Themes\admin\js\datapicker\datepicker-active.js" />
+    <Content Include="App_Themes\admin\js\dropzone\dropzone.js" />
+    <Content Include="App_Themes\admin\js\duallistbox\duallistbox.active.js" />
+    <Content Include="App_Themes\admin\js\duallistbox\jquery.bootstrap-duallistbox.js" />
+    <Content Include="App_Themes\admin\js\e-payment.js" />
+    <Content Include="App_Themes\admin\js\editable\bootstrap-datetimepicker.js" />
+    <Content Include="App_Themes\admin\js\editable\bootstrap-editable.js" />
+    <Content Include="App_Themes\admin\js\editable\jquery.mockjax.js" />
+    <Content Include="App_Themes\admin\js\editable\mock-active.js" />
+    <Content Include="App_Themes\admin\js\editable\moment.min.js" />
+    <Content Include="App_Themes\admin\js\editable\select2.js" />
+    <Content Include="App_Themes\admin\js\editable\xediable-active.js" />
+    <Content Include="App_Themes\admin\js\google.maps\google.maps-active.js" />
+    <Content Include="App_Themes\admin\js\icheck\icheck-active.js" />
+    <Content Include="App_Themes\admin\js\icheck\icheck.min.js" />
+    <Content Include="App_Themes\admin\js\input-mask\jasny-bootstrap.min.js" />
+    <Content Include="App_Themes\admin\js\ionRangeSlider\ion.rangeSlider.active.js" />
+    <Content Include="App_Themes\admin\js\ionRangeSlider\ion.rangeSlider.min.js" />
+    <Content Include="App_Themes\admin\js\jquery-price-slider.js" />
+    <Content Include="App_Themes\admin\js\jquery.meanmenu.js" />
+    <Content Include="App_Themes\admin\js\jquery.payform.min.js" />
+    <Content Include="App_Themes\admin\js\jquery.scrollUp.min.js" />
+    <Content Include="App_Themes\admin\js\jquery.sticky.js" />
+    <Content Include="App_Themes\admin\js\knob\jquery.knob.js" />
+    <Content Include="App_Themes\admin\js\knob\knob-active.js" />
+    <Content Include="App_Themes\admin\js\main.js" />
+    <Content Include="App_Themes\admin\js\metisMenu\metisMenu-active.js" />
+    <Content Include="App_Themes\admin\js\metisMenu\metisMenu.min.js" />
+    <Content Include="App_Themes\admin\js\morrisjs\morris-active-pro.js" />
+    <Content Include="App_Themes\admin\js\morrisjs\morris-active.js" />
+    <Content Include="App_Themes\admin\js\morrisjs\morris.js" />
+    <Content Include="App_Themes\admin\js\morrisjs\raphael-min.js" />
+    <Content Include="App_Themes\admin\js\notifications\Lobibox.js" />
+    <Content Include="App_Themes\admin\js\notifications\notification-active.js" />
+    <Content Include="App_Themes\admin\js\owl.carousel.min.js" />
+    <Content Include="App_Themes\admin\js\password-meter\password-meter-active.js" />
+    <Content Include="App_Themes\admin\js\password-meter\pwstrength-bootstrap.min.js" />
+    <Content Include="App_Themes\admin\js\password-meter\zxcvbn.js" />
+    <Content Include="App_Themes\admin\js\pdf\jquery.media.js" />
+    <Content Include="App_Themes\admin\js\pdf\pdf-active.js" />
+    <Content Include="App_Themes\admin\js\peity\jquery.peity.min.js" />
+    <Content Include="App_Themes\admin\js\peity\peity-active.js" />
+    <Content Include="App_Themes\admin\js\plugins.js" />
+    <Content Include="App_Themes\admin\js\rangle-slider\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="App_Themes\admin\js\rangle-slider\jquery-ui-touch-punch.min.js" />
+    <Content Include="App_Themes\admin\js\rangle-slider\rangle-active.js" />
+    <Content Include="App_Themes\admin\js\scrollbar\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="App_Themes\admin\js\scrollbar\mCustomScrollbar-active.js" />
+    <Content Include="App_Themes\admin\js\select2\select2-active.js" />
+    <Content Include="App_Themes\admin\js\select2\select2.full.min.js" />
+    <Content Include="App_Themes\admin\js\sparkline\jquery.charts-sparkline.js" />
+    <Content Include="App_Themes\admin\js\sparkline\jquery.sparkline.min.js" />
+    <Content Include="App_Themes\admin\js\sparkline\sparkline-active.js" />
+    <Content Include="App_Themes\admin\js\summernote\summernote-active.js" />
+    <Content Include="App_Themes\admin\js\summernote\summernote.min.js" />
+    <Content Include="App_Themes\admin\js\tab.js" />
+    <Content Include="App_Themes\admin\js\touchspin\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="App_Themes\admin\js\touchspin\touchspin-active.js" />
+    <Content Include="App_Themes\admin\js\tree-line\jstree.active.js" />
+    <Content Include="App_Themes\admin\js\tree-line\jstree.min.js" />
+    <Content Include="App_Themes\admin\js\vendor\jquery-1.11.3.min.js" />
+    <Content Include="App_Themes\admin\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="App_Themes\admin\js\wizard\jquery.steps.js" />
+    <Content Include="App_Themes\admin\js\wizard\steps-active.js" />
+    <Content Include="App_Themes\admin\js\wow.min.js" />
+    <Content Include="App_Themes\admin\style.css" />
+    <Content Include="App_Themes\client\css\default.css" />
+    <Content Include="App_Themes\client\css\etalage.css" />
+    <Content Include="App_Themes\client\css\form.css" />
+    <Content Include="App_Themes\client\css\fwslider.css" />
+    <Content Include="App_Themes\client\css\magnific-popup.css" />
+    <Content Include="App_Themes\client\css\megamenu.css" />
+    <Content Include="App_Themes\client\css\nivo-slider.css" />
+    <Content Include="App_Themes\client\css\style.css" />
+    <Content Include="App_Themes\client\css\zoome-min.css" />
+    <Content Include="App_Themes\client\images\2.png" />
+    <Content Include="App_Themes\client\images\3.png" />
+    <Content Include="App_Themes\client\images\8.png" />
+    <Content Include="App_Themes\client\images\a-img.jpg" />
+    <Content Include="App_Themes\client\images\a-img1.jpg" />
+    <Content Include="App_Themes\client\images\a-img2.jpg" />
+    <Content Include="App_Themes\client\images\arrow.png" />
+    <Content Include="App_Themes\client\images\arrow1.png" />
+    <Content Include="App_Themes\client\images\arrow2.gif" />
+    <Content Include="App_Themes\client\images\arrows.png" />
+    <Content Include="App_Themes\client\images\b-arrow.png" />
+    <Content Include="App_Themes\client\images\banner.jpg" />
+    <Content Include="App_Themes\client\images\banner1.jpg" />
+    <Content Include="App_Themes\client\images\cart.png" />
+    <Content Include="App_Themes\client\images\cart2.png" />
+    <Content Include="App_Themes\client\images\cart3.png" />
+    <Content Include="App_Themes\client\images\down-arrow.png" />
+    <Content Include="App_Themes\client\images\f-icon.png" />
+    <Content Include="App_Themes\client\images\f-tw.png" />
+    <Content Include="App_Themes\client\images\header_arrow.png" />
+    <Content Include="App_Themes\client\images\img-sprite.png" />
+    <Content Include="App_Themes\client\images\left-banner1.jpg" />
+    <Content Include="App_Themes\client\images\list_marker.png" />
+    <Content Include="App_Themes\client\images\logo.png" />
+    <Content Include="App_Themes\client\images\magnify-alt.png" />
+    <Content Include="App_Themes\client\images\minus.gif" />
+    <Content Include="App_Themes\client\images\p1.jpg" />
+    <Content Include="App_Themes\client\images\p2.jpg" />
+    <Content Include="App_Themes\client\images\p3.jpg" />
+    <Content Include="App_Themes\client\images\p4.jpg" />
+    <Content Include="App_Themes\client\images\p5.jpg" />
+    <Content Include="App_Themes\client\images\p6.jpg" />
+    <Content Include="App_Themes\client\images\pic.jpg" />
+    <Content Include="App_Themes\client\images\pic1.jpg" />
+    <Content Include="App_Themes\client\images\pic2.jpg" />
+    <Content Include="App_Themes\client\images\pic3.jpg" />
+    <Content Include="App_Themes\client\images\pic4.jpg" />
+    <Content Include="App_Themes\client\images\pic5.jpg" />
+    <Content Include="App_Themes\client\images\pic6.jpg" />
+    <Content Include="App_Themes\client\images\pic7.jpg" />
+    <Content Include="App_Themes\client\images\pic8.jpg" />
+    <Content Include="App_Themes\client\images\plus.gif" />
+    <Content Include="App_Themes\client\images\quotes.png" />
+    <Content Include="App_Themes\client\images\s-img.jpg" />
+    <Content Include="App_Themes\client\images\s-img1.jpg" />
+    <Content Include="App_Themes\client\images\s-img2.jpg" />
+    <Content Include="App_Themes\client\images\s-img3.jpg" />
+    <Content Include="App_Themes\client\images\s1.jpg" />
+    <Content Include="App_Themes\client\images\s2.jpg" />
+    <Content Include="App_Themes\client\images\s3.jpg" />
+    <Content Include="App_Themes\client\images\s4.jpg" />
+    <Content Include="App_Themes\client\images\s5.jpg" />
+    <Content Include="App_Themes\client\images\s6.jpg" />
+    <Content Include="App_Themes\client\images\s7.jpg" />
+    <Content Include="App_Themes\client\images\s8.jpg" />
+    <Content Include="App_Themes\client\images\s9.jpg" />
+    <Content Include="App_Themes\client\images\search.png" />
+    <Content Include="App_Themes\client\images\t-img1.jpg" />
+    <Content Include="App_Themes\client\images\t-img2.jpg" />
+    <Content Include="App_Themes\client\images\t-img3.jpg" />
+    <Content Include="App_Themes\client\images\tag.png" />
+    <Content Include="App_Themes\client\images\zoom.png" />
+    <Content Include="App_Themes\client\js\css3-mediaqueries.js" />
+    <Content Include="App_Themes\client\js\fwslider.js" />
+    <Content Include="App_Themes\client\js\jquery-ui.min.js" />
+    <Content Include="App_Themes\client\js\jquery.easydropdown.js" />
+    <Content Include="App_Themes\client\js\jquery.etalage.min.js" />
+    <Content Include="App_Themes\client\js\jquery.flexisel.js" />
+    <Content Include="App_Themes\client\js\jquery.jscrollpane.min.js" />
+    <Content Include="App_Themes\client\js\jquery.magnific-popup.js" />
+    <Content Include="App_Themes\client\js\jquery.nivo.slider.js" />
+    <Content Include="App_Themes\client\js\jquery1.min.js" />
+    <Content Include="App_Themes\client\js\login.js" />
+    <Content Include="App_Themes\client\js\megamenu.js" />
+    <Content Include="App_Themes\client\js\slides.min.jquery.js" />
+    <Content Include="App_Themes\client\js\zoome-e.js" />
+    <Content Include="App_Themes\client\style.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Public\css\all.min.css" />
+    <Content Include="Public\css\bo2otstrap.min.css" />
+    <Content Include="Public\css\bootstrap.min.css" />
+    <Content Include="Public\css\car.css" />
+    <Content Include="Public\css\cruise.css" />
+    <Content Include="Public\css\Cruise.html" />
+    <Content Include="Public\css\dashboard.css" />
+    <Content Include="Public\css\flight.css" />
+    <Content Include="Public\css\fStyle.css" />
+    <Content Include="Public\css\hotel.css" />
+    <Content Include="Public\css\icons.css" />
+    <Content Include="Public\css\plugin.css" />
+    <Content Include="Public\css\style.css" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-2.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-3.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-4.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-5.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62.html" />
+    <Content Include="Public\fonts\fontawesome-webfontd41d.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regulard41dd41d.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-2.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-3.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-4.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5.html" />
+    <Content Include="Public\font\flaticon.css" />
+    <Content Include="Public\font\Flaticon.svg" />
+    <Content Include="Public\font\iconsmindca27.svg" />
+    <Content Include="Public\font\simple-line-iconsc05f-2.html" />
+    <Content Include="Public\font\simple-line-iconsc05f.html" />
+    <Content Include="Public\images\adbg.jpg" />
+    <Content Include="Public\images\at1.jpg" />
+    <Content Include="Public\images\at2.jpg" />
+    <Content Include="Public\images\at3.jpg" />
+    <Content Include="Public\images\author.jpg" />
+    <Content Include="Public\images\blog1.jpg" />
+    <Content Include="Public\images\blog2.jpg" />
+    <Content Include="Public\images\blog3.jpg" />
+    <Content Include="Public\images\blog4.jpg" />
+    <Content Include="Public\images\blog5.jpg" />
+    <Content Include="Public\images\blog6.jpg" />
+    <Content Include="Public\images\breadcrumb.jpg" />
+    <Content Include="Public\images\bucket.png" />
+    <Content Include="Public\images\bucket1.jpg" />
+    <Content Include="Public\images\bucket2.jpg" />
+    <Content Include="Public\images\bucket3.jpg" />
+    <Content Include="Public\images\bucket4.jpg" />
+    <Content Include="Public\images\bucket5.jpg" />
+    <Content Include="Public\images\bucket6.jpg" />
+    <Content Include="Public\images\bucketbg.jpg" />
+    <Content Include="Public\images\cars\cars1.jpg" />
+    <Content Include="Public\images\cars\cars2.jpg" />
+    <Content Include="Public\images\cars\cars3.jpg" />
+    <Content Include="Public\images\cars\cars4.jpg" />
+    <Content Include="Public\images\cars\cars5.jpg" />
+    <Content Include="Public\images\cars\cars6.jpg" />
+    <Content Include="Public\images\cars\cars7.jpg" />
+    <Content Include="Public\images\cars\cars8.jpg" />
+    <Content Include="Public\images\comment.jpg" />
+    <Content Include="Public\images\countdownbg.jpg" />
+    <Content Include="Public\images\cruise\cruise1.jpg" />
+    <Content Include="Public\images\cruise\cruise2.jpg" />
+    <Content Include="Public\images\cruise\cruise3.jpg" />
+    <Content Include="Public\images\cruise\cruise4.jpg" />
+    <Content Include="Public\images\cruise\cruise5.jpg" />
+    <Content Include="Public\images\cruise\cruise6.jpg" />
+    <Content Include="Public\images\cruise\cruise7.jpg" />
+    <Content Include="Public\images\cruise\cruise8.jpg" />
+    <Content Include="Public\images\deal1.jpg" />
+    <Content Include="Public\images\deal2.jpg" />
+    <Content Include="Public\images\deal3.jpg" />
+    <Content Include="Public\images\deal4.jpg" />
+    <Content Include="Public\images\deal5.jpg" />
+    <Content Include="Public\images\dealsbg-1.jpg" />
+    <Content Include="Public\images\dealsbg.jpg" />
+    <Content Include="Public\images\destination-fw1.jpg" />
+    <Content Include="Public\images\destination-fw2.jpg" />
+    <Content Include="Public\images\destination-fw3.jpg" />
+    <Content Include="Public\images\destination-fw4.jpg" />
+    <Content Include="Public\images\destination1.jpg" />
+    <Content Include="Public\images\destination2.jpg" />
+    <Content Include="Public\images\destination3.jpg" />
+    <Content Include="Public\images\destination4.jpg" />
+    <Content Include="Public\images\detailslider1.jpg" />
+    <Content Include="Public\images\detailslider2.jpg" />
+    <Content Include="Public\images\detailslider3.jpg" />
+    <Content Include="Public\images\detailslider4.jpg" />
+    <Content Include="Public\images\flight\01.jpg" />
+    <Content Include="Public\images\flight\02.jpg" />
+    <Content Include="Public\images\flight\03.jpg" />
+    <Content Include="Public\images\flight\04.jpg" />
+    <Content Include="Public\images\flight\05.jpg" />
+    <Content Include="Public\images\flight\flight1.jpg" />
+    <Content Include="Public\images\flight\flight2.jpg" />
+    <Content Include="Public\images\flight\flight3.jpg" />
+    <Content Include="Public\images\flight\flight4.jpg" />
+    <Content Include="Public\images\flight\flight5.jpg" />
+    <Content Include="Public\images\flight\flight_grid_1.png" />
+    <Content Include="Public\images\flight\flight_grid_2.png" />
+    <Content Include="Public\images\flight\flight_grid_3.png" />
+    <Content Include="Public\images\flight\flight_grid_4.png" />
+    <Content Include="Public\images\flight\flight_grid_5.png" />
+    <Content Include="Public\images\flight\plane1.jpg" />
+    <Content Include="Public\images\flight\plane2.jpg" />
+    <Content Include="Public\images\flight\plane3.jpg" />
+    <Content Include="Public\images\flight\plane4.jpg" />
+    <Content Include="Public\images\flight\plane5.jpg" />
+    <Content Include="Public\images\flight\plane6.jpg" />
+    <Content Include="Public\images\ft1.jpg" />
+    <Content Include="Public\images\ft2.jpg" />
+    <Content Include="Public\images\ft3.jpg" />
+    <Content Include="Public\images\ft4.jpg" />
+    <Content Include="Public\images\ft5.jpg" />
+    <Content Include="Public\images\fw1.jpg" />
+    <Content Include="Public\images\fw2.jpg" />
+    <Content Include="Public\images\grid.jpg" />
+    <Content Include="Public\images\grid1.jpg" />
+    <Content Include="Public\images\grid2.jpg" />
+    <Content Include="Public\images\grid3.jpg" />
+    <Content Include="Public\images\grid4.jpg" />
+    <Content Include="Public\images\grid5.jpg" />
+    <Content Include="Public\images\hotel\cta.jpg" />
+    <Content Include="Public\images\hotel\room-1.jpg" />
+    <Content Include="Public\images\hotel\room-2.jpg" />
+    <Content Include="Public\images\hotel\room-3.jpg" />
+    <Content Include="Public\images\hotel\room-4.jpg" />
+    <Content Include="Public\images\hotel\room-5.jpg" />
+    <Content Include="Public\images\hotel\room-6.jpg" />
+    <Content Include="Public\images\hotel\services1.jpg" />
+    <Content Include="Public\images\hotel\services2.jpg" />
+    <Content Include="Public\images\hotel\services3.jpg" />
+    <Content Include="Public\images\hotel\services4.jpg" />
+    <Content Include="Public\images\hotel\services5.jpg" />
+    <Content Include="Public\images\hotel\slider1.jpg" />
+    <Content Include="Public\images\hotel\slider2.jpg" />
+    <Content Include="Public\images\hotel\slider3.jpg" />
+    <Content Include="Public\images\insta1.jpg" />
+    <Content Include="Public\images\insta2.jpg" />
+    <Content Include="Public\images\insta3.jpg" />
+    <Content Include="Public\images\insta4.jpg" />
+    <Content Include="Public\images\insta5.jpg" />
+    <Content Include="Public\images\insta6.jpg" />
+    <Content Include="Public\images\insta7.jpg" />
+    <Content Include="Public\images\insta8.jpg" />
+    <Content Include="Public\images\insta9.jpg" />
+    <Content Include="Public\images\list10.jpg" />
+    <Content Include="Public\images\list6.jpg" />
+    <Content Include="Public\images\list7.jpg" />
+    <Content Include="Public\images\list8.jpg" />
+    <Content Include="Public\images\list9.jpg" />
+    <Content Include="Public\images\loader.gif" />
+    <Content Include="Public\images\logo1.png" />
+    <Content Include="Public\images\mount.png" />
+    <Content Include="Public\images\newssection-bg.jpg" />
+    <Content Include="Public\images\package1.jpg" />
+    <Content Include="Public\images\package2.jpg" />
+    <Content Include="Public\images\package3.jpg" />
+    <Content Include="Public\images\partner1.png" />
+    <Content Include="Public\images\partner2.png" />
+    <Content Include="Public\images\partner3.png" />
+    <Content Include="Public\images\partner4.png" />
+    <Content Include="Public\images\partner5.png" />
+    <Content Include="Public\images\partner6.png" />
+    <Content Include="Public\images\payment1.png" />
+    <Content Include="Public\images\payment2.png" />
+    <Content Include="Public\images\payment3.png" />
+    <Content Include="Public\images\payment4.png" />
+    <Content Include="Public\images\profile1.jpg" />
+    <Content Include="Public\images\quote.png" />
+    <Content Include="Public\images\recent1.jpg" />
+    <Content Include="Public\images\recent2.jpg" />
+    <Content Include="Public\images\sale1.jpg" />
+    <Content Include="Public\images\sale2.jpg" />
+    <Content Include="Public\images\sale3.jpg" />
+    <Content Include="Public\images\sale4.jpg" />
+    <Content Include="Public\images\section1-bg.jpg" />
+    <Content Include="Public\images\shop1.png" />
+    <Content Include="Public\images\shop3.png" />
+    <Content Include="Public\images\shop4.png" />
+    <Content Include="Public\images\shop5.png" />
+    <Content Include="Public\images\slider-blog\slider1.jpg" />
+    <Content Include="Public\images\slider-blog\slider2.jpg" />
+    <Content Include="Public\images\slider-blog\slider3.jpg" />
+    <Content Include="Public\images\slider\slider1.jpg" />
+    <Content Include="Public\images\slider\slider10.jpg" />
+    <Content Include="Public\images\slider\slider11.jpg" />
+    <Content Include="Public\images\slider\slider2.jpg" />
+    <Content Include="Public\images\slider\slider3.jpg" />
+    <Content Include="Public\images\slider\slider6.jpg" />
+    <Content Include="Public\images\slider\slider7.jpg" />
+    <Content Include="Public\images\slider\slider8.jpg" />
+    <Content Include="Public\images\slider\slider9.jpg" />
+    <Content Include="Public\images\testemonial1.jpg" />
+    <Content Include="Public\images\testemonial2.jpg" />
+    <Content Include="Public\images\testemonial3.jpg" />
+    <Content Include="Public\images\testemonial4.jpg" />
+    <Content Include="Public\images\testemonial5.jpg" />
+    <Content Include="Public\images\testimonialbg.jpg" />
+    <Content Include="Public\images\user-avatar.jpg" />
+    <Content Include="Public\images\video.mp4" />
+    <Content Include="Public\images\Yatra-01.png" />
+    <Content Include="Public\images\Yatra-white.png" />
+    <Content Include="Public\font\Flaticon.eot" />
+    <Content Include="Public\font\Flaticon.ttf" />
+    <Content Include="Public\font\Flaticon.woff" />
+    <Content Include="Public\font\Flaticond41d.eot" />
+    <Content Include="Public\font\iconsmindca27.eot" />
+    <Content Include="Public\font\iconsmindca27.ttf" />
+    <Content Include="Public\font\iconsmindca27.woff" />
+    <Content Include="Public\font\iconsmindd41d.eot" />
+    <Content Include="Public\font\Simple-Line-Iconsc05f.ttf" />
+    <Content Include="Public\font\Simple-Line-Iconsc05f.woff" />
+    <Content Include="Public\js\bootstrap.min.js" />
+    <Content Include="Public\js\chart.js" />
+    <Content Include="Public\js\counterup.min.js" />
+    <Content Include="Public\js\custom-accordian.js" />
+    <Content Include="Public\js\custom-countdown.js" />
+    <Content Include="Public\js\custom-video.js" />
+    <Content Include="Public\js\dashboard-custom.js" />
+    <Content Include="Public\js\jpanelmenu.min.js" />
+    <Content Include="Public\js\jquery-3.2.1.min.js" />
+    <Content Include="Public\js\jquery-modal-video.min.js" />
+    <Content Include="Public\js\main-1.js" />
+    <Content Include="Public\js\main.js" />
+    <Content Include="Public\js\map.js" />
+    <Content Include="Public\js\new\bootstrap.min.js" />
+    <Content Include="Public\js\new\jquery-3.2.1.slim.min.js" />
+    <Content Include="Public\js\new\jquery-3.4.1.min.js" />
+    <Content Include="Public\js\new\popper.min.js" />
+    <Content Include="Public\js\plugin.js" />
+    <Content Include="Public\js\preloader.js" />
+    <Content Include="Public\js\rangeslider.js" />
+    <Content Include="Public\js\tabs.html" />
+    <Content Include="Public\plugins\datatables-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\css\responsive.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Public\plugins\jquery-ui\AUTHORS.txt" />
+    <Content Include="Public\plugins\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.js" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Public\plugins\jquery-ui\LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Public\plugins\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Public\plugins\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote-lite.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote.css" />
+    <Content Include="Public\plugins\summernote\summernote.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.css" />
+    <Content Include="Public\plugins\summernote\summernote.min.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.LICENSE.txt" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\style.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CarController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderServiceCarController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Common\Userlogin.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="library\Message.cs" />
+    <Compile Include="library\Mystring.cs" />
+    <Compile Include="Models\BanVeMayBayDbContext.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_layOutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_mainmenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_leftMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\_login.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\_adminSession.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_MessgeAlert.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\EditUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderServiceCar\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderServiceCar\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderServiceCar\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderServiceCar\PrintOrder.cshtml" />
+    <Content Include="App_Themes\admin\css\summernote\fonts\summernote.eot" />
+    <Content Include="App_Themes\admin\css\summernote\fonts\summernote.ttf" />
+    <Content Include="App_Themes\admin\css\summernote\fonts\summernote.woff" />
+    <Content Include="App_Themes\admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Themes\admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Themes\admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="App_Themes\admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="App_Themes\admin\fonts\FontAwesome.otf" />
+    <Content Include="App_Themes\admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Themes\admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Themes\admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Themes\admin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Themes\client\images\cart.psd" />
+    <Content Include="App_Themes\client\images\cart2.psd" />
+    <Content Include="App_Themes\client\images\logo.psd" />
+    <None Include="packages.config" />
+    <Content Include="Public\plugins\summernote\font\summernote.eot" />
+    <Content Include="Public\plugins\summernote\font\summernote.ttf" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff2" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_XeMoiNhatPartial.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\OrderView.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54015</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54000/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

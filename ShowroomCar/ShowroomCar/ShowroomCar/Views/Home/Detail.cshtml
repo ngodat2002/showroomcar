@@ -1,0 +1,175 @@
+﻿@model ShowroomCar.Models.Car
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Showroom ô tô</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/App_Themes/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/App_Themes/client/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='https://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="~/App_Themes/client/js/jquery1.min.js"></script>
+    <!-- start menu -->
+    <link href="~/App_Themes/client/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/App_Themes/client/js/megamenu.js"></script>
+    <script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>
+    <script type="text/javascript" src="~/App_Themes/client/js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" id="sourcecode">
+        $(function () {
+            $('.scroll-pane').jScrollPane();
+        });
+    </script>
+    <!-- start details -->
+    <script src="~/App_Themes/client/js/slides.min.jquery.js"></script>
+    <script>
+        $(function () {
+            $('#products').slides({
+                preload: true,
+                preloadImage: 'img/loading.gif',
+                effect: 'slide, fade',
+                crossfade: true,
+                slideSpeed: 350,
+                fadeSpeed: 500,
+                generateNextPrev: true,
+                generatePagination: false
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="~/App_Themes/client/css/etalage.css">
+    <script src="~/App_Themes/client/js/jquery.etalage.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+
+            $('#etalage').etalage({
+                thumb_image_width: 360,
+                thumb_image_height: 360,
+                source_image_width: 900,
+                source_image_height: 900,
+                show_hint: true,
+                click_callback: function (image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="mens">
+        <div class="main">
+            <div class="wrap">
+                <ul class="breadcrumb breadcrumb__t"><a class="home" href="~/Home/Index">Home</a> / Detail</ul>
+                <div class="cont span_2_of_3">
+                    <div class="grid images_3_of_2">
+                        <ul id="etalage">
+                            <li>
+                                <a href="">
+                                    <img class="etalage_thumb_image" src="~/public/images/Product/@Model.Image" class="img-responsive" />
+                                    <img class="etalage_source_image" src="~/public/images/Product/@Model.Image" class="img-responsive" title="" />
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="desc1 span_3_of_2">
+                        <h3 class="m_3">@Model.Name</h3>
+                        <p style="color:red">@Model.Price.ToString("0##,##0") VND</p>
+                        <br />
+                        <table class="table">
+                            <tbody>
+                                <tr class="table-success">
+                                    <td>Number: </td>
+                                    <td>@Model.Number</td>
+
+                                </tr>
+                                <tr class="table-success">
+                                    <td>Solid: </td>
+                                    <td>@Model.Solid</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @using (Html.BeginForm("ThemVaoGioHang", "Home", FormMethod.Post))
+                        {
+                            <input name="maXe" value="@Model.ID" type="hidden" />
+                            <div id="SoLuong">
+                            </div>
+                            <div class="btn_buttom">
+                                <a href="~/home/OrderView?id=@Model.ID&type=1&totalPrice=@Model.Price" class="btn btn-sm btn-success">Schedule</a>
+                                <a href="~/home/OrderView?id=@Model.ID&type=2&totalPrice=@Model.Price" class="btn btn-sm btn-info">Order Car</a>
+                            </div>
+
+                        }
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="container border">
+                        <p>@Html.Raw(Model.Content)</p>
+
+                    </div>
+                    <div id="fb-root"></div>
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=184594436427854&autoLogAppEvents=1" nonce="Lpj1yZ4Z"></script>
+                    <div class="container">
+                        <div class="fb-comments" data-width="" data-numposts="5"></div>
+                        <div class="clients">
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $("#flexiselDemo1").flexisel();
+                                    $("#flexiselDemo2").flexisel({
+                                        enableResponsiveBreakpoints: true,
+                                        responsiveBreakpoints: {
+                                            portrait: {
+                                                changePoint: 480,
+                                                visibleItems: 1
+                                            },
+                                            landscape: {
+                                                changePoint: 640,
+                                                visibleItems: 2
+                                            },
+                                            tablet: {
+                                                changePoint: 768,
+                                                visibleItems: 3
+                                            }
+                                        }
+                                    });
+
+                                    $("#flexiselDemo3").flexisel({
+                                        visibleItems: 5,
+                                        animationSpeed: 1000,
+                                        autoPlay: false,
+                                        autoPlaySpeed: 3000,
+                                        pauseOnHover: true,
+                                        enableResponsiveBreakpoints: true,
+                                        responsiveBreakpoints: {
+                                            portrait: {
+                                                changePoint: 480,
+                                                visibleItems: 1
+                                            },
+                                            landscape: {
+                                                changePoint: 640,
+                                                visibleItems: 2
+                                            },
+                                            tablet: {
+                                                changePoint: 768,
+                                                visibleItems: 3
+                                            }
+                                        }
+                                    });
+
+                                });
+                            </script>
+                            <script type="text/javascript" src="~/App_Themes/client/js/jquery.flexisel.js"></script>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+</body>
+
+</html>

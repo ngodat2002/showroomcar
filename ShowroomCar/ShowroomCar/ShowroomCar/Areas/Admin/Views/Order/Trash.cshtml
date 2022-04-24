@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ShowroomCar.Models.Order>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card card-title bg-white p-1">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Trash</h5> </div>
+        <div class="col-md-6 m-0">
+            <ol class="breadcrumb bg-white float-sm-right m-0">
+                <li class="breadcrumb-item m-0"><a href="~/Admin">Home</a></li>
+                <li class="breadcrumb-item active m-0">Trash</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<section class=" ">
+    <div class=" bg-white card  p-3">
+        <div class="row justify-content-end">
+          
+        </div>
+        <div class="row">
+            <div class="col-md-9  w-100 ">
+                @Html.Partial("_MessgeAlert")
+            </div>
+            <div class="col-md-12 p-3">
+
+                <table class="table px-3 table-striped table-bordered dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>ScheduleTime</th>
+                            <th>Option</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.Name)</a></td>
+                            <td><a class=" font-weight-bold card-link " href=""> @Html.DisplayFor(modelItem => item.Phone)</a></td>
+                            <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                            <td> @item.ScheduleTime.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                <a class="btn btn-sm btn-light text-success border" href="@Url.Action("Retrash", "order", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                <a class="btn btn-sm btn-light text-danger border" href="@Url.Action("deleteTrash", "order", new { id = item.ID })">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            <td class="text-cam ">@Html.DisplayFor(modelItem => item.ID)</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $("#user").addClass("active");
+</script>

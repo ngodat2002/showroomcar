@@ -1,0 +1,101 @@
+﻿
+@model ShowroomCar.Models.Car
+
+@{
+
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> listcat = new List<SelectListItem>();
+    List<SelectListItem> listorder = new List<SelectListItem>();
+    List<SelectListItem> status = new List<SelectListItem>();
+
+    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Mở bán" };
+    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Chưa mở bán" };
+    status.Add(statusitem1);
+    status.Add(statusitem2);
+
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="p-5 container card">
+        @Html.Partial("_MessgeAlert")
+        <div class="container bg-white p-4 ">
+
+            @using (Html.BeginForm("Edit", "car", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.Image)
+                @Html.HiddenFor(model => model.Solid)   
+                <div class=" row ">
+                    <div class="col-md-4">  </div>
+                    <div class="col-md-4"> <h3 class="text-center font-weight-bold text-success "> UPDATE CAR</h3> </div>
+                    <div class="col-md-4 ">
+                        <div class="float-right">
+                            <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Save</button>
+                            <a href="~/admin/post" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i> Cannel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row ">
+                    <div class="col-md-8">
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Name</span></label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Trademark </span></label>
+                            @Html.EditorFor(model => model.Trademark, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Trademark, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Content</span></label>
+                            @Html.TextAreaFor(model => model.Content, new
+                            {
+                                @class = "form-control textarea",
+                           @style = "width: 100%;font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+                            })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Number</span></label>
+                            @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "0", @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Price</span></label>
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @type = "number", @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Image</span></label>
+                            <input type="file" class="form-control" name="img" />
+                            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-secondary ">Status</span></label>
+                            @Html.DropDownListFor(model => model.Status, status, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+        </div>
+    </section>
+    <script>
+        $("#post").addClass("active");
+        $(function () {
+            // Summernote
+            $('.textarea').summernote()
+        })
+    </script>

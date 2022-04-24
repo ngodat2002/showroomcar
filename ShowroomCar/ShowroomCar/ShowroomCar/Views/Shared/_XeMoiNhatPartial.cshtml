@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CarShowroom.Models.Xe>
+<h3 class="m_3">Các mẫu xe khác</h3>
+<ul id="flexiselDemo3">
+    @foreach (var item in Model)
+    {
+        <li><a href="/Home/Detail?maXe=@item.MaXe"><img style="width:150px;height:84px;" src="@item.HinhAnh" /><p style="color:blue">@item.TenXe</p></a><p style="color:red">@item.GiaChoThue.ToString("0##,##0")/Ngày</p></li>
+    }
+</ul>

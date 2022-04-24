@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--SHIPPING METHOD-->
+
+<div class="panel panel-info col-md-7 border">
+    <div style="color:white;background-color:#52c5ff;" class="panel-heading p-2">information Order</div>
+    <div class="panel-body pl-5 col-md-12">
+        <form action="~/home/OrderView" method="post">
+            <div class="form-group">
+                <input type="hidden" name="Type" value="@ViewBag.type" class="form-control" />
+                <input type="hidden" name="carId" value="@ViewBag.id" class="form-control" />
+                <input type="hidden" name="totalPrice" value="@ViewBag.totalPrice" class="form-control" />
+                
+                <div class="col-md-12"><strong>Name:</strong></div>
+                <div class="col-md-12">
+                    <input type="text" name="Name" placeholder="Name" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>Phone:</strong></div>
+                <div class="col-md-12">
+                    <input type="number" name="Phone" placeholder="Phone" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>Email:</strong></div>
+                <div class="col-md-12">
+                    <input type="email" name="Email" placeholder="Email" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>Address:</strong></div>
+                <div class="col-md-12">
+                    <input type="text" name="Address" placeholder="Address" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>ScheduleTime:</strong></div>
+                <div class="col-md-12">
+                    <input class="form-control text-box single-line" placeholder="ScheduleTime" data-val="true" data-val-date="The field NgayThue must be a date." id="NgayThue" name="ScheduleTime" type="datetime-local">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>Payenh method:</strong></div>
+                <div class="col-md-12 form-group">
+                    <select name="PaymentMethod" id="cars" class="form-control ">
+                        <option value="Cash">Cash</option>
+                        <option value="Bank">Bank</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12"><strong>Note:</strong></div>
+                <div class="col-md-12 form-group ">
+                  <textarea class="form-control" placeholder="Note" name="Note" rows="2"></textarea>
+                </div>
+            </div>
+            <div class="form-group p-4">
+                <button class="btn btn-sm btn-success float-right" type="submit"> Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
